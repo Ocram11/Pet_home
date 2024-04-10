@@ -26,18 +26,18 @@ function Register() {
   }, [isAuthenticated]);
 
   return (
-    <div className="h-[calc(100vh-100px)] flex items-center justify-center">
+    <div className="bg-[#fed7aa] h-[calc(100vh-100px)] flex items-center justify-center">
       <Card>
         {registerErrors.map((error, i) => (
           <Message message={error} key={i} />
         ))}
-        <h1 className="text-3xl font-bold">Register</h1>
+        <h1 className="text-3xl font-bold">Registrate</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Label htmlFor="username">Username:</Label>
+          <Label htmlFor="username">Nombre de Usuario:</Label>
           <Input
             type="text"
             name="username"
-            placeholder="Write your name"
+            placeholder="Escribe tu nombre de usuario "
             {...register("username")}
             autoFocus
           />
@@ -48,14 +48,14 @@ function Register() {
           <Label htmlFor="email">Email:</Label>
           <Input
             name="email"
-            placeholder="youremail@domain.tld"
+            placeholder="tu_email@gmail.com"
             {...register("email")}
           />
           {errors.email?.message && (
             <p className="text-red-500">{errors.email?.message}</p>
           )}
 
-          <Label htmlFor="password">Password:</Label>
+          <Label htmlFor="password">Contraseña:</Label>
           <Input
             type="password"
             name="password"
@@ -66,7 +66,7 @@ function Register() {
             <p className="text-red-500">{errors.password?.message}</p>
           )}
 
-          <Label htmlFor="confirmPassword">Confirm Password:</Label>
+          <Label htmlFor="confirmPassword">Confirmar Contraseña:</Label>
           <Input
             type="password"
             name="confirmPassword"
@@ -76,12 +76,12 @@ function Register() {
           {errors.confirmPassword?.message && (
             <p className="text-red-500">{errors.confirmPassword?.message}</p>
           )}
-          <Button>Submit</Button>
+          <Button>Registrar</Button>
         </form>
-        <p>
-          Already Have an Account?
-          <Link className="text-sky-500" to="/login">
-            Login
+        <p className="flex gap-x-2 justify-between">
+          Ya tienes una cuenta?
+          <Link className="text-[#3b82f6]" to="/login">
+            Iniciar Sesión
           </Link>
         </p>
       </Card>

@@ -11,17 +11,51 @@ export const getTasks = async (req, res) => {
 
 export const createTask = async (req, res) => {
   try {
-    const { title, description, date } = req.body;
+    const { Nombre_Cliente,
+      Apellido_Paterno,
+      Apellido_Materno,
+      Numero_1,
+      Numero_2,
+      Curp,
+      Email,
+      DireccionReferencia,
+      Nombre_Mascota,
+      FechaNacimiento,
+      Raza,
+      Color,
+      Nombre_Vacuna,
+      FechaAplicacion,
+      Dosis,
+      CondicionesEspeciales,
+      Alimentacion,
+      Alergias,
+      ComentariosExtra,
+ } = req.body;
     const newTask = new Task({
-      title,
-      description,
-      date,
-      user: req.user.id,
+      Nombre_Cliente,
+      Apellido_Paterno,
+      Apellido_Materno,
+      Numero_1,
+      Numero_2,
+      Curp,
+      Email,
+      DireccionReferencia,
+      Nombre_Mascota,
+      FechaNacimiento,
+      Raza,
+      Color,
+      Nombre_Vacuna,
+      FechaAplicacion,
+      Dosis,
+      CondicionesEspeciales,
+      Alimentacion,
+      Alergias,
+      ComentariosExtra
     });
     await newTask.save();
     res.json(newTask);
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message+"prueba" });
   }
 };
 
@@ -29,7 +63,7 @@ export const deleteTask = async (req, res) => {
   try {
     const deletedTask = await Task.findByIdAndDelete(req.params.id);
     if (!deletedTask)
-      return res.status(404).json({ message: "Task not found" });
+      return res.status(404).json({ message: "Reserva not found" });
 
     return res.sendStatus(204);
   } catch (error) {
@@ -39,10 +73,46 @@ export const deleteTask = async (req, res) => {
 
 export const updateTask = async (req, res) => {
   try {
-    const { title, description, date } = req.body;
+    const { Nombre_Cliente,
+      Apellido_Paterno,
+      Apellido_Materno,
+      Numero_1,
+      Numero_2,
+      Curp,
+      Email,
+      DireccionReferencia,
+      Nombre_Mascota,
+      FechaNacimiento,
+      Raza,
+      Color,
+      Nombre_Vacuna,
+      FechaAplicacion,
+      Dosis,
+      CondicionesEspeciales,
+      Alimentacion,
+      Alergias,
+      ComentariosExtra } = req.body;
     const taskUpdated = await Task.findOneAndUpdate(
       { _id: req.params.id },
-      { title, description, date },
+      { Nombre_Cliente,
+        Apellido_Paterno,
+        Apellido_Materno,
+        Numero_1,
+        Numero_2,
+        Curp,
+        Email,
+        DireccionReferencia,
+        Nombre_Mascota,
+        FechaNacimiento,
+        Raza,
+        Color,
+        Nombre_Vacuna,
+        FechaAplicacion,
+        Dosis,
+        CondicionesEspeciales,
+        Alimentacion,
+        Alergias,
+        ComentariosExtra },
       { new: true }
     );
     return res.json(taskUpdated);
@@ -54,7 +124,7 @@ export const updateTask = async (req, res) => {
 export const getTask = async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
-    if (!task) return res.status(404).json({ message: "Task not found" });
+    if (!task) return res.status(404).json({ message: "Reserva not found" });
     return res.json(task);
   } catch (error) {
     return res.status(500).json({ message: error.message });

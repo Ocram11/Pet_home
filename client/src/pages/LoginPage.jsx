@@ -26,12 +26,12 @@ export function LoginPage() {
   }, [isAuthenticated]);
 
   return (
-    <div className="h-[calc(100vh-100px)] flex items-center justify-center">
+    <div className="bg-[#fed7aa] h-[calc(100vh-100px)] flex items-center justify-center">
       <Card>
         {loginErrors.map((error, i) => (
           <Message message={error} key={i} />
         ))}
-        <h1 className="text-2xl font-bold">Login</h1>
+        <h1 className="text-2xl font-bold">Iniciar Sesión</h1>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <Label htmlFor="email">Email:</Label>
@@ -39,25 +39,25 @@ export function LoginPage() {
             label="Write your email"
             type="email"
             name="email"
-            placeholder="youremail@domain.tld"
+            placeholder="tu_email@gmail.com"
             {...register("email", { required: true })}
           />
-          <p>{errors.email?.message}</p>
+          <p className="text-red-500">{errors.email?.message}</p>
 
-          <Label htmlFor="password">Password:</Label>
+          <Label htmlFor="password">Contraseña:</Label>
           <Input
             type="password"
             name="password"
-            placeholder="Write your password"
+            placeholder="Escribe tu contraseña"
             {...register("password", { required: true, minLength: 6 })}
           />
-          <p>{errors.password?.message}</p>
+          <p className="text-red-500">{errors.password?.message}</p>
 
-          <Button>Login</Button>
+          <Button>Ingresar</Button>
         </form>
 
         <p className="flex gap-x-2 justify-between">
-          Don't have an account? <Link to="/register" className="text-sky-500">Sign up</Link>
+          No tienes cuenta? <Link to="/register" className="text-[#3b82f6]">Registrarse</Link>
         </p>
       </Card>
     </div>
